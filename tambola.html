@@ -1,0 +1,230 @@
+<script type="text/javascript" src="jquery.min.js"></script>
+<div class="container">
+    <div>
+        <span class="title">Tambola Picker</span>
+    </div>
+    <div class="bigNumberDisplay">
+        <span>0</span>
+    </div>
+    <div>
+        <input id="btnGenerate" type="button" value="Generate"/>
+    </div>
+
+    <br/>
+
+    <div class="numbersTable">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+      
+</div>
+<script>
+$(function() {
+    var bingo = {
+        selectedNumbers: [],
+        generateRandom: function() {
+            var min = 1;
+            var max = 90;
+            var random= Math.floor(Math.random() * (max - min + 1)) + min;
+            return random;
+        },
+        generateNextRandom: function() {
+		console.log(bingo.selectedNumbers.length)
+            if (bingo.selectedNumbers.length > 89) {
+                alert("All numbers Exhausted");
+                return 0;
+            }
+            var random = bingo.generateRandom();
+            while ($.inArray(random, bingo.selectedNumbers) > -1) {
+                random = bingo.generateRandom();
+            }
+            bingo.selectedNumbers.push(random);
+            return random;
+        }
+    };
+	var num = 1;
+    $('td').each(function() {
+	//console.log(this.cellIndex + 1);
+        var concatClass = this.cellIndex + "" + this.parentNode.rowIndex;
+        var numberString = parseInt(concatClass, 10).toString();
+		var numberString = num++;
+        $(this).addClass("cell" + numberString).text(numberString);
+    });
+    $('#btnGenerate').click(function() {
+        var random = bingo.generateNextRandom().toString();
+        $('.bigNumberDisplay span').text(random);
+        $('td.cell' + random).addClass('selected');
+    });
+    window.onbeforeunload = function(e) {
+        e = e || window.event;
+        var returnString = 'Are you sure?';
+        if (e) {
+            e.returnValue = returnString;
+        }
+        return returnString;
+    };
+});
+</script>
+<style>
+.title{
+color: white;
+font-size: 2em;
+}
+		body{
+			background-color: rgba(27, 0, 255, 0.39);
+			font-family: "Ubuntu",Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+       div {
+            text-align: center;
+        }
+
+        .bigNumberDisplay {
+            font-size: 4em;
+			
+        }
+
+        .numbersTable {
+            font-size: 1.6em;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+			width: 90%;
+        }
+
+        table, tr, td {
+            border-collapse: collapse;
+            border: solid 1px #999;
+			
+        }
+
+        td {
+            min-width: 20px;
+            color: #fff;
+			text-align: center;
+			padding: 5px;
+			font-size: 1em;
+        }
+
+        td.selected {
+			color: rgb(246, 16, 90);
+			font-weight: bold;
+			background-color: #dbd2d2;
+        }
+	#btnGenerate{
+		width: 200px;
+		font-size: 2em;
+		}
+
+</style>
