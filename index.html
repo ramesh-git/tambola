@@ -7,7 +7,8 @@
         <span>0</span>
     </div>
     <div>
-        <input id="btnGenerate" type="button" value="Generate"/>
+        <input id="btnGenerate" type="button" value="Pick Number"/>
+		<input id="btnReset" type="button" value="New Game"/>
     </div>
 
     <br/>
@@ -128,6 +129,14 @@
     </div>
       
 </div>
+<br/>
+<table>
+<tr><td>Jaldi Five</td><td><input type="number" id="a" size="3" placeholder="Jaldi Five" value="0"></td></tr>
+<tr><td>Line</td><td><input type="number" id="b" size="3" placeholder="Line" value="0"></td></tr>
+<tr><td>1st Housie</td><td><input type="number" id="c" size="3" placeholder="1st Housie" value="0"></td></tr>
+<tr><td>2nd Housie</td><td><input type="number" id="d" size="3" placeholder="2nd Housie" value="0"></td></tr>
+<tr><td>3rd Housie</td><td><input type="number" id="e" size="3" placeholder="3rd Housie" value="0"></td></tr>
+<tr><td>Total</td><td><input type="number" id="f" size="3" placeholder="Total" value="0" readonly></td></tr>
 <script>
 $(function() {
     var bingo = {
@@ -153,7 +162,7 @@ $(function() {
         }
     };
 	var num = 1;
-    $('td').each(function() {
+    $('.numbersTable td').each(function() {
 	//console.log(this.cellIndex + 1);
         var concatClass = this.cellIndex + "" + this.parentNode.rowIndex;
         var numberString = parseInt(concatClass, 10).toString();
@@ -173,6 +182,14 @@ $(function() {
         }
         return returnString;
     };
+});
+$(document).ready(function(){
+	$('#a,#b,#c,#d,#e').change(function(){
+		$('#f').val(parseInt($('#a').val()) + (parseInt($('#b').val())*3) + parseInt($('#c').val()) + parseInt($('#d').val()) + parseInt($('#e').val()));
+	});
+	$('#btnReset').click(function(){
+		location.reload();
+	});
 });
 </script>
 <style>
@@ -222,9 +239,9 @@ font-size: 2em;
 			font-weight: bold;
 			background-color: #dbd2d2;
         }
-	#btnGenerate{
-		width: 200px;
-		font-size: 2em;
+	#btnGenerate,#btnReset{
+		width: 150px;
+		font-size: 1em;
 		}
 
 </style>
