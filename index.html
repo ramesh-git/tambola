@@ -25,6 +25,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
             </tr>
             <tr>
                 <td></td>
@@ -36,6 +37,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
             </tr>
             <tr>
                 <td></td>
@@ -46,28 +48,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+				<td></td>
                 <td></td>
             </tr>
             <tr>
@@ -80,6 +61,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
             </tr>
             <tr>
                 <td></td>
@@ -91,6 +73,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
             </tr>
             <tr>
                 <td></td>
@@ -102,6 +85,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
             </tr>
             <tr>
                 <td></td>
@@ -113,6 +97,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
             </tr>
             <tr>
                 <td></td>
@@ -124,10 +109,22 @@
                 <td></td>
                 <td></td>
                 <td></td>
+				<td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+				<td></td>
             </tr>
         </table>
-    </div>
-      
+    </div>      
 </div>
 <br/>
 <table>
@@ -184,7 +181,7 @@ $(function() {
     };
 });
 $(document).ready(function(){
-	$('#a,#b,#c,#d,#e').change(function(){
+	$('#a,#b,#c,#d,#e').keyup(function(){
 		$('#f').val(parseInt($('#a').val()) + (parseInt($('#b').val())*3) + parseInt($('#c').val()) + parseInt($('#d').val()) + parseInt($('#e').val()));
 	});
 	$('#btnReset').click(function(){
